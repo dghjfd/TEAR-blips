@@ -20,7 +20,7 @@ Config.PoliceJobs = {
 -- ==================== 地图可见范围 ====================
 -- false = 全图可见（无限范围，整张地图都能看到 blip）
 -- true  = 仅近距离可见（靠近雷达范围才显示，推荐开启以优化视觉效果）
-Config.BlipShortRange = true
+Config.BlipShortRange = false
 
 -- ==================== 性能优化（动态刷新频率） ====================
 Config.RadarRange = 250.0            -- 雷达范围（米）。在此范围内视为“近距离”，高频更新。
@@ -33,7 +33,7 @@ Config.BlipScale = 1.0
 Config.BlipCategory = 2                -- 2=图例显示距离
 Config.BlipShowCone = false           -- 关闭前方白色扇形区域（不要扇形）
 Config.BlipHeadingIndicator = true    -- 显示 blip 上的黑色/深色朝向箭头
-Config.BlipDisplay = 6
+Config.BlipDisplay = 4                -- 4 = 在地图和雷达上都显示（确保全图可见）
 
 -- 图标（水滴/三角造型）
 Config.SpriteOnFoot = 1

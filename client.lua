@@ -125,10 +125,13 @@ local function getOrCreateBlip(playerId, playerPed)
         return data.blip, false
     end
 
-    local blip = AddBlipForEntity(playerPed)
+    -- 使用 AddBlipForCoord 替代 AddBlipForEntity，确保全图可见
+    local coords = GetEntityCoords(playerPed)
+    local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
     if not blip or not DoesBlipExist(blip) then return nil, false end
 
-    SetBlipAsShortRange(blip, Config.BlipShortRange)
+    -- 设置为全图可见（false = 全图，true = 仅近距离）
+    SetBlipAsShortRange(blip, false)
     SetBlipCategory(blip, Config.BlipCategory or 2)
     SetBlipDisplay(blip, Config.BlipDisplay or 6)
     SetBlipShowCone(blip, Config.BlipShowCone or false)
@@ -316,6 +319,8 @@ CreateThread(function()
                         end
                     else
                         local sid = GetPlayerServerId(pid)
+                        -- 修复：默认显示其他玩家的 blip（nil 视为 true）
+                        -- 只有明确设置为 false 时才隐藏
                         if playerBlipsStates[sid] ~= false then
                             UpdatePlayerBlip(pid, ped)
                         else

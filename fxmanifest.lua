@@ -3,7 +3,7 @@ game 'gta5'
 
 author 'TEAR-blips'
 description '独立警员 Blips'
-version '1.0.5'
+version '1.1.3'
 lua54 'yes'
 
 shared_scripts {
